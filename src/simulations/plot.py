@@ -18,15 +18,15 @@ partitioning_method = config.subgraph.partitioning
 save_dir = os.path.join(project_root, "results", "clients_Compare", f"{config.dataset.dataset_name}_{partitioning_method}")
 
 
-fed_path_1 = os.path.join(save_dir, "FedAvg_GNN, 1.csv")
-fed_path_2 = os.path.join(save_dir, "FedAvg_GNN, 5.csv")
-fed_path_3 = os.path.join(save_dir, "FedAvg_GNN, 10.csv")
-fed_path_4 = os.path.join(save_dir, "FedAvg_GNN, 20.csv")
-fed_path_5 = os.path.join(save_dir, "FedAvg_GNN, 40.csv")
-fed_path_6 = os.path.join(save_dir, "local_GNN, 5.csv")
-fed_path_7 = os.path.join(save_dir, "local_GNN, 10.csv")
-fed_path_8 = os.path.join(save_dir, "local_GNN, 20.csv")
-fed_path_9 = os.path.join(save_dir, "local_GNN, 40.csv")
+fed_path_1 = os.path.join(save_dir, "FedAvg_GNN,1.csv")
+fed_path_2 = os.path.join(save_dir, "FedAvg_GNN,5.csv")
+fed_path_3 = os.path.join(save_dir, "FedAvg_GNN,10.csv")
+fed_path_4 = os.path.join(save_dir, "FedAvg_GNN,20.csv")
+fed_path_5 = os.path.join(save_dir, "FedAvg_GNN,40.csv")
+fed_path_6 = os.path.join(save_dir, "local_GNN,5.csv")
+fed_path_7 = os.path.join(save_dir, "local_GNN,10.csv")
+fed_path_8 = os.path.join(save_dir, "local_GNN,20.csv")
+fed_path_9 = os.path.join(save_dir, "local_GNN,40.csv")
 
 
 # CSV読み込み
