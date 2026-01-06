@@ -158,7 +158,7 @@ if __name__ == "__main__":
         "global_round": range(1, config.model.iterations + 1),
         "accuracy": avg_history * 100
     })
-    central_csv_path = os.path.join(save_dir, f"{method_name}, {config.subgraph.num_subgraphs}.csv")
+    central_csv_path = os.path.join(save_dir, f"{method_name},{config.subgraph.num_subgraphs}.csv")
     central_df.to_csv(central_csv_path, index=False)
 
     plt.figure(figsize=(10,8))
