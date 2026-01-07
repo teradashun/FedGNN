@@ -352,14 +352,14 @@ def plot_class_distribution_heatmap(graph, subgraph_node_ids, num_classes):
     )
 
     plt.figure(figsize=(12, 8))
-    sns.heatmap(df, annot=False, fmt=".0f", cmap="summer_r")
+    sns.heatmap(df, annot=False, fmt=".0f", cmap="summer_r", vmax=180)
     plt.title("Node Class Distribution per Client")
     plt.xlabel("Client index")
     plt.ylabel("Class Index")
-    plt.savefig("class_distribution_heatmap.png")
+    plt.savefig(f"class_distribution_heatmap_K={num_clients}.png")
     plt.show()
 
 if __name__ == "__main__":
-    num_subgraphs = 3
+    num_subgraphs = 200
     subgraphs_node_ids = partition_graph(dataset[0], num_subgraphs, method="kmeans")
     plot_class_distribution_heatmap(dataset[0], subgraphs_node_ids, dataset.num_classes)

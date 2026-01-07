@@ -1,6 +1,7 @@
 from itertools import chain
 from collections import defaultdict
 
+import traceback
 import torch
 import numpy as np
 import networkx as nx
@@ -60,6 +61,7 @@ def make_groups_smaller_than_max(community_groups, group_len_max) -> dict:
 def assign_nodes_to_subgraphs(community_groups, num_nodes, num_subgraphs):
     max_subgraph_nodes = num_nodes // num_subgraphs
     subgraph_node_ids = {subgraph_id: [] for subgraph_id in range(num_subgraphs)}
+    
     # subgraphs = cycle(subgraph_node_ids.keys())
     current_ind = 0
 
@@ -97,6 +99,7 @@ def assign_nodes_to_subgraphs(community_groups, num_nodes, num_subgraphs):
 
 def create_subgraps(graph: Graph, subgraph_node_ids: dict):
     subgraphs = []
+    
     for community, subgraph_nodes in subgraph_node_ids.items():
         if not isinstance(subgraph_nodes, torch.Tensor):
             node_ids = torch.tensor(subgraph_nodes, device=device)
@@ -199,7 +202,13 @@ def random_assign(num_nodes, num_subgraphs):
 
 def kmeans_cut(X, num_subgraphs):
     num_nodes = X.shape[0]
+    print("\n" + "="*30)
+    print("DEBUG: kmeans_cut was called!")
+    traceback.print_stack()  # 呼び出し元をすべて表示
+    print("="*30 + "\n")
+    
     _, subgraph_id, _ = k_means(X.cpu(), num_subgraphs, n_init="auto")
+    
     community_groups = create_community_groups(subgraph_id)
 
     group_len_max = num_nodes // num_subgraphs + config.subgraph.delta
@@ -212,7 +221,7 @@ def kmeans_cut(X, num_subgraphs):
             community_groups.items(), key=lambda item: len(item[1]), reverse=True
         )
     }
-
+    
     subgraph_node_ids = assign_nodes_to_subgraphs(
         sorted_community_groups, num_nodes, num_subgraphs
     )

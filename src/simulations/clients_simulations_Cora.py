@@ -55,7 +55,7 @@ if __name__ == "__main__":
     FedGCN_server2 = FedGCNServer(graph)
     GNN_server_ideal = GNNServer(graph)
 
-    rep = 30
+    rep = 1
     plot_data = {}
 
     for partitioning in [partitioning_method]:

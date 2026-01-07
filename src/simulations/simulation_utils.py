@@ -41,7 +41,8 @@ def create_clients(
     Fedgcn_server2.reset_clients()
 
     subgraphs = partition_graph(graph, num_subgraphs, partitioning)
-
+    
+    #print(type(subgraphs))
     for subgraph in subgraphs:
         MLP_server.add_client(subgraph)
         GNN_server.add_client(subgraph)
